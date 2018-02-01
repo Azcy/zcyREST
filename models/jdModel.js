@@ -18,6 +18,7 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		tableName: 'jdModel',
 		timestamps: false,
+		// 这个选项表示，数据库中的表明与程序中的保持一致，否则数据库中的表名会以复数的形式命名
 		freezeTableName: true
 	});
 };
