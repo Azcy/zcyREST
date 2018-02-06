@@ -18,7 +18,7 @@ sqldb.sequelize.sync({force:false}).then(()=>{
 });
 
 //查询
-sqldb.User.findAndCountAll( {raw : true, logging : true, plain : false}).then(result=>{
+sqldb.User.findAndCount( {raw : true, logging : true, plain : false}).then(result=>{
     console.log(result.count);
     console.log(result.rows);
 })
@@ -30,10 +30,10 @@ sqldb.User.findAndCountAll( {raw : true, logging : true, plain : false}).then(re
 })*/
 
 //插入
-sqldb.User.insertOrUpdate({name:'Mr zcy',email:'112@qq.com',password:'12334'}).then(result=>{
+/*sqldb.User.insertOrUpdate({name:'Mr zcy',email:'112@qq.com',password:'12334'}).then(result=>{
     console.log(result);
     //console.log(result.rows);
-});
+});*/
     /*.on('success',msg=>{
     console.log(msg);})
     .on('failure',err=>{
