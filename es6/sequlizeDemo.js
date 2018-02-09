@@ -16,11 +16,15 @@ sqldb.sequelize.sync({force:false}).then(()=>{
 }).catch(err=>{
     console.log("Server failed to start due to error :",err);
 });
-
+//添加关联，并且设置外键,目标键是关联的字段
+sqldb.EMP.belongsTo(sqldb.DEPT,{foreignKey: 'DEPTNO',targetKey:'DEPTNO'});
 //查询
-sqldb.User.findAndCount( {raw : true, logging : true, plain : false}).then(result=>{
-    console.log(result.count);
-    console.log(result.rows);
+sqldb.EMP.findAll( {raw : true, logging : true, plain : false,include:[{
+    model:sqldb.DEPT//,
+    //where:{DEPTNO:sqldb.sequelize.col('EMP.DEPTNO')}
+}]}).then(result=>{
+    //console.log(result.count);
+    console.log(result);
 })
 
 //更新

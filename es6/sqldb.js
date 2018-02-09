@@ -19,6 +19,10 @@ var sequelize = new Sequelize(config.database,config.username,config.password,{
 var db={};
 db.sequelize=sequelize;
 
-db.User = db.sequelize.import('../models/t_user.js');
+db.DEPT = db.sequelize.import('../models/DEPT.js');
+
+db.EMP=db.sequelize.import('../models/EMP.js');
+
+db.SALGRADE=db.sequelize.import('../models/SALGRADE.js');
 
 module.exports=db;
