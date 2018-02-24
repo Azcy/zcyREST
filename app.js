@@ -11,9 +11,17 @@ let app = new koa();
 const prepare = require(path.join(__dirname, 'core', 'prepare'));
 const models = prepare.sequelize.models;
 let restql = new RestQL(models);
-/*app.use(convert(cors()));*/
-/*app.use(kjwt({
+
+//权限控制，必须要加上Bearer Token 以secret加密
+/*
+app.use(kjwt({
 	secret: config.jwtSecret
-}));*/
+}));
+*/
+
+const qs=require("qs");
+let res = qs.stringify({"kk": {$gt: "M",$lt: "N"}})
+console.log(res);
+
 app.use(restql.routes());
 app.listen('9000', '127.0.0.1');

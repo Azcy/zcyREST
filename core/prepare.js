@@ -30,7 +30,14 @@ fs.readdirSync(path.join(__dirname, '..', 'models'))
     .forEach(function (file) {
         var model = sequelize.import(path.join(__dirname, '..', 'models', file))
         db[model.name] = model
+
     })
+
+//如果有关联查询需求，则需要添加表关系
+//请求规则：http://localhost:9000/EMP?DEPTNO=10&_include=DEPT
+db['EMP'].belongsTo(db['DEPT'],{foreignKey: 'DEPTNO',targetKey:'DEPTNO'});
+
+
 // 绑定模型关系（1对1，1对多，多对多）
 Object.keys(db).forEach(function (modelName) {
     if ("associate" in db[modelName]) {
