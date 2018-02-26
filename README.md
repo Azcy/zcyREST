@@ -1,3 +1,8 @@
+## CURD
+
+``
+
+
 ## 1.查询
 
 对RESTful URL进行GET请求即可查询到数据库中的数据，可以通过querystring来修改参数。
@@ -48,10 +53,33 @@
     实例url请求：
     http://localhost:9000/DEPT?kk[$gt]=M&kk[$lt]=N
     
+    关联查询，查询出EMP，DEPTNO为10的DEPT结果
+    请求规则：http://localhost:9000/EMP?DEPTNO=10&_include=DEPT
+    
     更多规则请参考Sequelize文档。
 
+### 删除规则
 
+    DELETE http://"URL":"端口号"/"表名"/"id"
+    
+    条件删除
+    DELETE http://"URL":"端口号"/"表名"?DEPT=10
+    
+### 插入规则
+    
+    POST  http://"URL":"端口号"/"表名"
+    
+    body：
+    {
+      "name": "zcy",
+      "age":"24",
+      "descripe":""
+    }
 
+### 更新/创建
+
+    PUT http://"URL":"端口号"/"表名"/:id?“字段名”=“修改值”
+    
 
 ### 任务
     
@@ -62,6 +90,7 @@
     5、请求规则的测试
     6、koa与express的差别
 
+### sequlize的规则
 ```
 Project.findAll({
   where: {
