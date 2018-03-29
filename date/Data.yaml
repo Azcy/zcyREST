@@ -1,149 +1,151 @@
-﻿---
+﻿#DATAYAML:
 ATTR:
+  #数据点
   CollectTime:
+    TYPE: STRING
     NAME: 采集时间
-    TYPE: STRING
-  DP:
-    NAME: DP
-    TYPE: STRING
-  DataDecimal:
-    NAME: 小数点位数字
-    TYPE: NUMBER
-  DataDesc:
-    MODEL: DataDesc_Model
-    NAME: 数据点描述
-    TYPE: MODEL
-  DataEnName:
-    NAME: 数据点英文名
-    TYPE: STRING
-  DataFunc:
-    MODEL: DataFunc_Model
-    NAME: 数据类型
-    TYPE: MODEL
-  DataID:
-    NAME: DataID
-    TYPE: STRING
   DataPoint_UUID:
+    TYPE: NUMBER
     NAME: 数据点UUID
-    TYPE: NUMBER
-  DataType:
-    MODEL: DataType_Model
-    NAME: 数据类型
-    TYPE: MODEL
   DataType_SeqNum:
-    NAME: 同类数据序列号
     TYPE: NUMBER
-  DataTypelvl1:
-    NAME: 数据类型层级
-    TYPE: STREE_LEVEL
-  DataUnit:
-    NAME: 数据单位
-    TYPE: STRING
-  DataUnitlvl1:
-    NAME: 数据单位层级
-    TYPE: STREE_LEVEL
+    NAME: 同类数据序列号
   DataValue:
+    TYPE: STRING
     NAME: 数据值
-    TYPE: STRING
-  Experiment:
-    MODEL: Experiment_Model
-    NAME: 实验类型
-    TYPE: MODEL
-  ExperimentName:
-    NAME: 实验类型层级
+  #数据单位
+  DataUnitlvl1:
     TYPE: STREE_LEVEL
-  ExperimentNum:
-    NAME: 数据实验编号
+    NAME: 数据单位层级
+  DataUnit:
     TYPE: STRING
-  GroupName:
-    NAME: GroupName
+    NAME: 数据单位
+  #数据类型
+  DataTypelvl1:
+    TYPE: STREE_LEVEL
+    NAME: 数据类型层级
+  DataType:
+    TYPE: MODEL
+    NAME: 数据类型
+    MODEL: DataType_Model
+  DataFunc:
+    TYPE: MODEL
+    NAME: 数据类型
+    MODEL: DataFunc_Model
+  DataDecimal:
+    TYPE: NUMBER
+    NAME: 小数点位数字
+  DataEnName:
     TYPE: STRING
-  NameC:
-    NAME: NameC
-    TYPE: STRING
-  NameE:
-    NAME: NameE
-    TYPE: STRING
+    NAME: 数据点英文名
+  #数据描述引用
+  DataDesc:
+    TYPE: MODEL
+    NAME: 数据点描述
+    MODEL: DataDesc_Model
   TestMachine:
+    TYPE: STRING
     NAME: 测试机名
+  ExperimentName:
+    TYPE: STREE_LEVEL
+    NAME: 实验类型层级
+  ExperimentNum:
     TYPE: STRING
+    NAME: 数据实验编号
+  Experiment:
+    TYPE: MODEL
+    NAME: 实验类型
+    MODEL: Experiment_Model
+  GroupName:
+    TYPE: STRING
+    NAME: GroupName
+  NameC:
+    TYPE: STRING
+    NAME: NameC
+  NameE:
+    TYPE: STRING
+    NAME: NameE
   Unit:
-    NAME: Unit
     TYPE: STRING
+    NAME: Unit
+  DP:
+    TYPE: STRING
+    NAME: DP
+  DataID:
+    TYPE: STRING
+    NAME: DataID
 MODEL:
-  DataFunc_Model:
-    ATTR-LIST:
-      - DataTypelvl1
-    NAME: 数据功能模型
-    STREE:
-      其他: ~
-      压力: ~
-      温湿度: ~
-      热电耦: ~
-      状态: ~
-      电参数: ~
-      能力: ~
-      速率: ~
+  Experiment_Model:
     TYPE: STREE
+    NAME: 实验模型
+    ATTR-LIST: [ExperimentName]
+    STREE:
+      热平衡:
+      焓差:
+  DataType_Model:
+    TYPE: STREE
+    NAME: 数据功能模型
+    ATTR-LIST: [DataTypelvl1]
+    STREE:
+      电压:
+      电流:
+      电能:
+      功率:
+      功率因素:
+      额定功率:
+      额定功率比:
+      输入功率:
+      频率:
+      温度:
+      温差:
+      水量:
+      热量:
+      显热量:
+      显热比:
+      冷暖能力:
+      热电耦:
+      冷媒压力:
+      额定值:
+      额定比:
+      平衡比:
+      大气压:
+  DataFunc_Model:
+    TYPE: STREE
+    NAME: 数据功能模型
+    ATTR-LIST: [DataTypelvl1]
+    STREE:
+      电参数:
+      压力:
+      速率:
+      温湿度:
+      能力:
+      热电耦:
+      状态:
+      其他:
   DataPoint_Model:
+    TYPE: EVENT
+    NAME: 数据点模型
+    PATH: $META/HAT-SaaS-Data/DataPoint_Model/r/n/n
+    MODEL: Location_Model
+    SCOPE: GLOBAL
     ATTR-LIST:
-      - CollectTime
-      - DataPoint_UUID
-      - Location
-      - UnitName
-      - TestMachine
-      - Experiment
-      - ExperimentNum
-      - DataType
-      - DataValue
+      - CollectTime        # 时间
+      - DataPoint_UUID     # UUID
+      - Location           # 地址 (一级实验室/二级实验室)
+      - UnitName           # 检测单元 (  model )
+      - TestMachine        # 被测机编号
+      - Experiment         # 实验类型
+      - ExperimentNum	   # 实验编号
+      - DataType           # 数据类型 (电压,电流)
+      - DataValue          # 值  
       - DataID
       - GroupName
       - NameC
       - NameE
       - Unit
       - DP
-    MODEL: Location_Model
-    NAME: 数据点模型
-    PATH: $META/HAT-SaaS-Data/DataPoint_Model/r/n/n
-    SCOPE: GLOBAL
-    TYPE: EVENT
-  DataType_Model:
-    ATTR-LIST:
-      - DataTypelvl1
-    NAME: 数据功能模型
-    STREE:
-      冷媒压力: ~
-      冷暖能力: ~
-      功率: ~
-      功率因素: ~
-      大气压: ~
-      平衡比: ~
-      显热比: ~
-      显热量: ~
-      水量: ~
-      温差: ~
-      温度: ~
-      热电耦: ~
-      热量: ~
-      电压: ~
-      电流: ~
-      电能: ~
-      输入功率: ~
-      频率: ~
-      额定值: ~
-      额定功率: ~
-      额定功率比: ~
-      额定比: ~
-    TYPE: STREE
-  Experiment_Model:
-    ATTR-LIST:
-      - ExperimentName
-    NAME: 实验模型
-    STREE: ~
-    TYPE: STREE
-    热平衡: ~
-    焓差: ~
+#实验 被测机 数据点
 PROJECT:
-  KEY: HAT-SaaS-Data
-  NAME: 电器检测云数据采集
-  SCOPE: PROJECT
+  SCOPE : PROJECT
+  KEY : HAT-SaaS-Data
+  NAME : 电器检测云数据采集
