@@ -1,0 +1,149 @@
+﻿---
+ATTR:
+  CollectTime:
+    NAME: 采集时间
+    TYPE: STRING
+  DP:
+    NAME: DP
+    TYPE: STRING
+  DataDecimal:
+    NAME: 小数点位数字
+    TYPE: NUMBER
+  DataDesc:
+    MODEL: DataDesc_Model
+    NAME: 数据点描述
+    TYPE: MODEL
+  DataEnName:
+    NAME: 数据点英文名
+    TYPE: STRING
+  DataFunc:
+    MODEL: DataFunc_Model
+    NAME: 数据类型
+    TYPE: MODEL
+  DataID:
+    NAME: DataID
+    TYPE: STRING
+  DataPoint_UUID:
+    NAME: 数据点UUID
+    TYPE: NUMBER
+  DataType:
+    MODEL: DataType_Model
+    NAME: 数据类型
+    TYPE: MODEL
+  DataType_SeqNum:
+    NAME: 同类数据序列号
+    TYPE: NUMBER
+  DataTypelvl1:
+    NAME: 数据类型层级
+    TYPE: STREE_LEVEL
+  DataUnit:
+    NAME: 数据单位
+    TYPE: STRING
+  DataUnitlvl1:
+    NAME: 数据单位层级
+    TYPE: STREE_LEVEL
+  DataValue:
+    NAME: 数据值
+    TYPE: STRING
+  Experiment:
+    MODEL: Experiment_Model
+    NAME: 实验类型
+    TYPE: MODEL
+  ExperimentName:
+    NAME: 实验类型层级
+    TYPE: STREE_LEVEL
+  ExperimentNum:
+    NAME: 数据实验编号
+    TYPE: STRING
+  GroupName:
+    NAME: GroupName
+    TYPE: STRING
+  NameC:
+    NAME: NameC
+    TYPE: STRING
+  NameE:
+    NAME: NameE
+    TYPE: STRING
+  TestMachine:
+    NAME: 测试机名
+    TYPE: STRING
+  Unit:
+    NAME: Unit
+    TYPE: STRING
+MODEL:
+  DataFunc_Model:
+    ATTR-LIST:
+      - DataTypelvl1
+    NAME: 数据功能模型
+    STREE:
+      其他: ~
+      压力: ~
+      温湿度: ~
+      热电耦: ~
+      状态: ~
+      电参数: ~
+      能力: ~
+      速率: ~
+    TYPE: STREE
+  DataPoint_Model:
+    ATTR-LIST:
+      - CollectTime
+      - DataPoint_UUID
+      - Location
+      - UnitName
+      - TestMachine
+      - Experiment
+      - ExperimentNum
+      - DataType
+      - DataValue
+      - DataID
+      - GroupName
+      - NameC
+      - NameE
+      - Unit
+      - DP
+    MODEL: Location_Model
+    NAME: 数据点模型
+    PATH: $META/HAT-SaaS-Data/DataPoint_Model/r/n/n
+    SCOPE: GLOBAL
+    TYPE: EVENT
+  DataType_Model:
+    ATTR-LIST:
+      - DataTypelvl1
+    NAME: 数据功能模型
+    STREE:
+      冷媒压力: ~
+      冷暖能力: ~
+      功率: ~
+      功率因素: ~
+      大气压: ~
+      平衡比: ~
+      显热比: ~
+      显热量: ~
+      水量: ~
+      温差: ~
+      温度: ~
+      热电耦: ~
+      热量: ~
+      电压: ~
+      电流: ~
+      电能: ~
+      输入功率: ~
+      频率: ~
+      额定值: ~
+      额定功率: ~
+      额定功率比: ~
+      额定比: ~
+    TYPE: STREE
+  Experiment_Model:
+    ATTR-LIST:
+      - ExperimentName
+    NAME: 实验模型
+    STREE: ~
+    TYPE: STREE
+    热平衡: ~
+    焓差: ~
+PROJECT:
+  KEY: HAT-SaaS-Data
+  NAME: 电器检测云数据采集
+  SCOPE: PROJECT

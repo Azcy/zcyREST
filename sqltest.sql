@@ -1,4 +1,4 @@
- DROP TABLE DEPT;
+-- DROP TABLE DEPT;
 -- 部门表
 CREATE TABLE DEPT(
     DEPTNO int  PRIMARY KEY,
@@ -15,7 +15,7 @@ CREATE TABLE DEPT(
     
     
     
- DROP TABLE EMP;
+-- DROP TABLE EMP;
 -- 员工表
 CREATE TABLE EMP(
     EMPNO int  PRIMARY KEY, -- 员工编号

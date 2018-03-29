@@ -1,0 +1,82 @@
+#GLOBALYAML
+ATTR:
+  LabName:
+    TYPE: STREE_LEVEL
+    NAME: 实验室名称
+  LabNameLv2:
+    TYPE: STREE_LEVEL
+    NAME: 二级实验室名称
+  DeviceTypeLvl1:
+    TYPE: STREE_LEVEL
+    NAME: 一级设备类型
+  DeviceTypeLvl2:
+    TYPE: STREE_LEVEL
+    NAME: 二级设备类型
+  Location:
+    TYPE: MODEL
+    NAME: 位置
+    MODEL: Location_Model
+  DeviceType:
+    TYPE: MODEL
+    NAME: 设备类型
+    MODEL: DeviceType_Model
+  TestUnitLvl1:
+    TYPE: STREE_LEVEL
+    NAME: 一级检测单元
+  TestUnitLvl2:
+    TYPE: STREE_LEVEL
+    NAME: 二级检测单元
+  UnitName:
+    TYPE: MODEL
+    NAME: 检测单元名
+    MODEL: TestUnit_Model
+  DeviceID:
+    TYPE: NUMBER
+    NAME: 设备ID
+MODEL:
+  TestUnit_Model:
+    TYPE: STREE
+    NAME: 检测单元层级
+    ATTR-LIST: [TestUnitLvl1, TestUnitLvl2]
+    STREE:
+      电表:
+      压缩机:
+      热电耦:
+      内套:
+        湿球:
+        干球:
+      外套:
+        湿球:
+        干球:
+      加湿器:
+        加湿量筒:
+      冷凝水检测:
+        量筒:
+      EER/COP:
+  Location_Model:
+    TYPE: STREE
+    NAME: 位置层级
+    ATTR-LIST: [LabName, LabNameLv2]
+    STREE:
+      热平衡实验室:
+        内侧:
+        外侧:
+      焓差实验室:
+        内侧:
+        外侧:
+  DeviceType_Model:
+    TYPE: STREE
+    NAME: 设备模型
+    ATTR-LIST: [DeviceTypeLvl1, DeviceTypeLvl2]
+    STREE:
+      传感器:
+        WattMeter:
+        Recorder:
+      控制器:
+        UT:
+        PLC:
+PROJECT :
+  SCOPE : GLOBAL
+  NAME : 电器检测云全局项目
+
+
