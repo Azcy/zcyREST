@@ -5,7 +5,7 @@ const yaml = require('js-yaml');
 const yaml_global = yaml.safeLoad(fs.readFile('../date/GLOBAL.yaml', 'utf8'));
 const yaml_local = yaml.safeLoad(fs.readFile('../date/HAT_SAAS.yaml', 'utf8'));
 
-console.log(yaml_local['PROJECT']['KEY'])
+
 module.exports=yaml_global;
 module.exports=yaml_global;
 
@@ -14,12 +14,12 @@ try {
     var data = YAML.parse(fs.readFileSync('../date/GLOBAL.yaml').toString());
     console.log(data);
     var host = data.MODEL;
-    var paths = Object.keys(data.MODEL);
-    var value = Object.getOwnPropertyDescriptor(paths[0])
+    var paths = Object.keys(data.ATTR);
+    //var value = Object.getOwnPropertyDescriptor(paths[0])
 
     //console.log(host);
     console.log(paths);
-    console.log(value)
+   // console.log(value)
 }catch (e) {
     console.log(e);
 }

@@ -5,11 +5,7 @@ module.exports = function(sequelize, DataTypes) {
 		DEPTNO: {
 			type: DataTypes.INTEGER(11),
 			allowNull: false,
-			primaryKey: true,
-            references: {
-                model: 'DEPT',
-                key: 'DEPTNO'
-            }
+			primaryKey: true
 		},
 		DNAME: {
 			type: DataTypes.STRING(14),
